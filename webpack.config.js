@@ -6,8 +6,9 @@ module.exports = {
   mode: process.env.NODE_ENV || 'development', // Fallback to 'development' if NODE_ENV is not set
   entry: './client/index.js', // Entry point for your app
   output: {
-    path: path.resolve(__dirname, 'build'), // Output directory for bundled files
-    filename: 'bundle.js', // Name of the bundled JavaScript file
+    path: path.resolve(__dirname, 'build'), // Physical location of bundled files
+    filename: 'bundle.js', // Output file name
+    publicPath: '/', // Serve files from the root URL
   },
   module: {
     rules: [

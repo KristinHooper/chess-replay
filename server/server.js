@@ -2,25 +2,19 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
-// uncomment the below for proxy challenge
+// Log the static file directory for debugging
+console.log('Serving static files from:', path.join(__dirname, '../build'));
 
-const leaderList = [
-  { name: 'Anna', id: 'a0' },
-  { name: 'Ben', id: 'b0' },
-  { name: 'Clara', id: 'c0' },
-  { name: 'David', id: 'd0' },
-];
+// Serve all static files from the build directory at the root URL
+app.use('/', express.static(path.join(__dirname, '../build')));
 
-app.get('/api/leaders', (req, res) => {
-  console.log('inside get request for leaders');
-  return res.status(200).send(leaderList);
-});
-
-// statically serve everything in the build folder on the route '/build'
-app.use('/build', express.static(path.join(__dirname, '../build')));
-// serve index.html on the route '/'
+// Serve index.html on the root route
 app.get('/', (req, res) => {
-  return res.status(200).sendFile(path.join(__dirname, '../index.html'));
+  return res.status(200).sendFile(path.join(__dirname, '../build/index.html'));
 });
 
-app.listen(3000); //listens on port 3000 -> http://localhost:3000/
+// Use environment variable PORT or fallback to 3000
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
