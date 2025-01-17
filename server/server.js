@@ -1,6 +1,7 @@
-const express = require('express');
+import express from 'express';
+import path from 'path';
+
 const app = express();
-const path = require('path');
 
 // Log the static file directory for debugging
 console.log('Serving static files from:', path.join(__dirname, '../build'));

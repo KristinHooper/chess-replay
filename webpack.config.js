@@ -1,10 +1,10 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 module.exports = {
   mode: process.env.NODE_ENV || 'development', // Fallback to 'development' if NODE_ENV is not set
-  entry: './client/index.js', // Entry point for your app
+  entry: './src/index.js', // Entry point for your app
   output: {
     path: path.resolve(__dirname, 'build'), // Physical location of bundled files
     filename: 'bundle.js', // Output file name
@@ -33,6 +33,10 @@ module.exports = {
           'sass-loader', // Compiles Sass to CSS
         ],
       },
+      {
+        test: /\.(png|jpe?g|gif|svg|ico)$/i, // Match image and icon files
+        type: 'asset/resource', // Move them to the output directory
+      },
     ],
   },
   resolve: {
@@ -41,7 +45,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Webpack App', // Title for the HTML file
-      template: 'index.html', // Template HTML file
+      template: './index.html', // Path to the template HTML file in the root directory
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css', // Output filename for CSS
@@ -49,11 +53,11 @@ module.exports = {
   ],
   devServer: {
     static: {
-      publicPath: '/build', // Serve files from the 'build' directory
-      directory: path.resolve(__dirname, 'build'),
+      directory: path.resolve(__dirname, 'public'), // Serve static assets from the public folder
     },
     compress: true, // Enable gzip compression
     port: 8080, // Port for the development server
+    historyApiFallback: true, // Ensure single-page app routing works
     proxy: [
       {
         context: ['/api'], // Proxy requests starting with "/api"
