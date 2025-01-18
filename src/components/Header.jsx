@@ -20,7 +20,7 @@ const Header = () => {
 
         {/* Title */}
         <h1 className='flex-1 text-4xl font-bold text-center leading-none'>
-          <Link to='/'>CHESS REPLAY</Link>
+          <Link to='/'>CHESSREPLAY</Link>
         </h1>
 
         {/* Login Button with Padding */}
@@ -49,7 +49,7 @@ const Header = () => {
               to='/search'
               className='hover:text-blue-500 px-3 py-2 rounded-lg'
             >
-              Search Database
+              Search The Database
             </Link>
           </li>
           <li>
