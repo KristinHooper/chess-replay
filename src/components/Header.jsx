@@ -1,27 +1,69 @@
-<header className='bg-gray-100 text-gray-900 shadow'>
-  <div className='container mx-auto flex items-center justify-between py-4 px-4'>
-    <img src='/public/chessReplay-logo.svg' alt='Icon' className='h-8 w-8' />
-    <h1 className='text-lg font-bold'>CHESS REPLAY</h1>
-    <Button isPrimary>Login</Button>
-  </div>
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/Button';
 
-  <nav className='bg-gray-200 text-gray-700 py-2'>
-    <ul className='flex justify-center gap-4'>
-      <li>
-        <a href='/watch' className='hover:text-blue-500'>
-          Watch
-        </a>
-      </li>
-      <li>
-        <a href='/search' className='hover:text-blue-500'>
-          Search Database
-        </a>
-      </li>
-      <li>
-        <a href='/faq' className='hover:text-blue-500'>
-          FAQ
-        </a>
-      </li>
-    </ul>
-  </nav>
-</header>;
+const Header = () => {
+  return (
+    <header className='bg-gray-100 text-gray-900 shadow'>
+      {/* Top Navigation Bar */}
+      <div className='container mx-auto flex items-center py-4 px-4'>
+        {/* Icon */}
+        <div className='flex items-center'>
+          <Link to='/'>
+            <img
+              src='/chessReplay-logo.svg'
+              alt='Chess Icon'
+              className='h-36 w-36'
+            />
+          </Link>
+        </div>
+
+        {/* Title */}
+        <h1 className='flex-1 text-4xl font-bold text-center leading-none'>
+          <Link to='/'>CHESS REPLAY</Link>
+        </h1>
+
+        {/* Login Button with Padding */}
+        <div className='pr-36'>
+          {' '}
+          {/* Padding matches the icon size */}
+          <Button className='bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark'>
+            Login
+          </Button>
+        </div>
+      </div>
+
+      {/* Horizontal Menu */}
+      <nav className='bg-gray-200 text-gray-700 py-2'>
+        <ul className='flex justify-center gap-4'>
+          <li>
+            <Link
+              to='/watch'
+              className='hover:text-blue-500 px-3 py-2 rounded-lg'
+            >
+              Watch
+            </Link>
+          </li>
+          <li>
+            <Link
+              to='/search'
+              className='hover:text-blue-500 px-3 py-2 rounded-lg'
+            >
+              Search Database
+            </Link>
+          </li>
+          <li>
+            <Link
+              to='/faq'
+              className='hover:text-blue-500 px-3 py-2 rounded-lg'
+            >
+              FAQ
+            </Link>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  );
+};
+
+export default Header;

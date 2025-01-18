@@ -1,16 +1,25 @@
 import React from 'react';
-import TestButton from '@/components/TestButton';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Landing from '@/pages/Landing';
+import Watch from '@/pages/Watch';
+import SearchDatabase from '@/pages/SearchDatabase';
+import FAQ from '@/pages/FAQ';
+import Header from '@/components/Header';
 
 const App = () => {
   return (
-    <div className='p-4'>
-      <h1 className='text-2xl font-bold'>ShadCN and Tailwind Test</h1>
-      <div className='space-y-4'>
-        <div className='p-4'>
-          <TestButton />
-        </div>
-      </div>
-    </div>
+    <Router>
+      {/* Shared Header */}
+      <Header />
+
+      {/* Define Routes */}
+      <Routes>
+        <Route path='/' element={<Landing />} />
+        <Route path='/watch' element={<Watch />} />
+        <Route path='/search' element={<SearchDatabase />} />
+        <Route path='/faq' element={<FAQ />} />
+      </Routes>
+    </Router>
   );
 };
 
