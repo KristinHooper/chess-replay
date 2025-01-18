@@ -1,7 +1,7 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 
-export const Button = ({
+export const CustomButton = ({
   children,
   className,
   isPrimary = false,

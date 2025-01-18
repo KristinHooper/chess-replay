@@ -1,6 +1,12 @@
 import React from 'react';
+import LandingCarousel from '@/components/LandingCarousel';
 
 const Landing = () => {
+  const images = [
+    '/images/slide1.jpg',
+    '/images/slide2.jpg',
+    '/images/slide3.jpg',
+  ];
   return (
     <div className='container mx-auto text-center py-12 px-6 bg-gray-100'>
       <div className='container mx-auto px-8 py-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center'>
@@ -75,9 +81,38 @@ const Landing = () => {
           </p>
         </div>
       </div>
+      <div className='container mx-auto px-8 py-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center'>
+        <div className='text-left'>
+          <h1 className='text-4xl font-bold mb-6'>
+            Unlock Deeper Insights with Aftergame Analysis
+          </h1>
+          <p className='text-lg mb-4'>
+            Every game of chess is a story—a narrative filled with strategic
+            triumphs, missed opportunities, and key turning points. Our
+            aftergame analysis breaks your matches into digestible moments,
+            pinpointing critical moves and alternative strategies you may have
+            overlooked. With detailed annotations and move-by-move evaluations,
+            you’ll gain a profound understanding of how the game unfolded,
+            enabling you to learn from both your victories and defeats.
+          </p>
+          <p className='text-lg'>
+            Gone are the days of generic analysis. Our system evaluates your
+            unique style, strengths, and areas for improvement, offering
+            actionable advice to enhance your gameplay. Whether you’re a
+            beginner learning the basics or an advanced player refining your
+            endgame, our aftergame analysis equips you with the knowledge you
+            need to dominate your next match. This isn’t just analysis—it’s your
+            gateway to becoming a more formidable player.
+          </p>
+        </div>
+        <div className='flex justify-center'>
+          <LandingCarousel/>
+
+  
+        </div>
+      </div>
     </div>
   );
 };
 
 export default Landing;
-
